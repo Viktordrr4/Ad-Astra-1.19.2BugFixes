@@ -83,7 +83,7 @@ public class FuelRefineryBlockEntity extends FluidMachineBlockEntity implements 
 
             if (this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), true) > 0) {
                 List<FuelConversionRecipe> recipes = FuelConversionRecipe.getRecipes(this.level);
-                if (FluidUtils.convertFluid(this.getFluidContainer(), recipes, FluidHooks.buckets(1) / 50)) {
+                if (this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), true) >= this.getEnergyPerTick() && FluidUtils.convertFluid(this.getFluidContainer(), recipes, FluidHooks.buckets(1) / 50)) {
                     this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), false);
                     this.setActive(true);
                 } else {

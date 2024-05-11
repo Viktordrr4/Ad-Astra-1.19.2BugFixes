@@ -52,7 +52,7 @@ public class CompressorBlockEntity extends ProcessingMachineBlockEntity implemen
         if (!this.level.isClientSide()) {
             if (this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), true) > 0) {
                 ItemStack input = this.getItem(0);
-                if (!input.isEmpty() && (input.is(this.inputStack.getItem()) || this.inputStack.isEmpty())) {
+                if (this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), true) >= this.getEnergyPerTick() && !input.isEmpty() && (input.is(this.inputStack.getItem()) || this.inputStack.isEmpty())) {
                     this.setActive(true);
                     if (this.cookTime < this.cookTimeTotal) {
                         this.cookTime++;

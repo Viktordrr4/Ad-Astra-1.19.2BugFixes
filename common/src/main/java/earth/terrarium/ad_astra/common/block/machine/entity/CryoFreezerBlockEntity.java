@@ -135,7 +135,7 @@ public class CryoFreezerBlockEntity extends AbstractMachineBlockEntity implement
             }
 
             if (this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), true) > 0) {
-                if ((!input.isEmpty() && (ItemStack.isSame(input, this.inputStack) || this.inputStack.isEmpty())) && getFluidContainer().getFluids().get(0).getFluidAmount() < getFluidContainer().getTankCapacity(0)) {
+                if (this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), true) >= this.getEnergyPerTick() && (!input.isEmpty() && (ItemStack.isSame(input, this.inputStack) || this.inputStack.isEmpty())) && getFluidContainer().getFluids().get(0).getFluidAmount() < getFluidContainer().getTankCapacity(0)) {
                     if (this.cookTime < this.cookTimeTotal) {
                         this.cookTime++;
                         this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), false);

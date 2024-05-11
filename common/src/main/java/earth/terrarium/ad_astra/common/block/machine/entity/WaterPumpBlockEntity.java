@@ -67,7 +67,7 @@ public class WaterPumpBlockEntity extends AbstractMachineBlockEntity implements 
 
                     // Drain the water block and add it to the tank.
                     FluidHolder waterFluid = FluidHooks.newFluidHolder(Fluids.WATER, WaterPumpConfig.transferPerTick, null);
-                    if (!this.getBlockState().getValue(AbstractMachineBlock.POWERED) && this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), true) > 0 && getFluidContainer().insertInternal(waterFluid, true) > 0) {
+                    if (this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), true) >= this.getEnergyPerTick() && !this.getBlockState().getValue(AbstractMachineBlock.POWERED) && this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), true) > 0 && getFluidContainer().insertInternal(waterFluid, true) > 0) {
                         this.setActive(true);
                         ModUtils.spawnForcedParticles((ServerLevel) this.level, ModParticleTypes.OXYGEN_BUBBLE.get(), this.getBlockPos().getX() + 0.5, this.getBlockPos().getY() - 0.5, this.getBlockPos().getZ() + 0.5, 1, 0.0, 0.0, 0.0, 0.01);
                         this.getEnergyStorage().internalExtract(this.getEnergyPerTick(), false);
