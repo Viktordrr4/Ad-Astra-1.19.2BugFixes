@@ -1,4 +1,10 @@
 <div align="center">
+  
+## 1.19.2 Bug fixes (if I should not put this above everything else please inform me.)
+
+fixed terrarium-earth/Ad-Astra#383
+
+<hr>
 
 ## Ad Astra
 
